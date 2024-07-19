@@ -25,7 +25,8 @@ const ProductListContainer = () => {
     return (
         <>
             <h1>Acá renderizamos el acumulado de productos</h1>
-            {products.length === 0 && <h1>Todavía no tenemos los productos</h1>}
+            {/* Rendering with one condition - wip: add loading */}
+            {/* {products.length === 0 && <h1>Todavía no tenemos los productos</h1>} */}
             <ProductList products={products} />
         </>
     );
