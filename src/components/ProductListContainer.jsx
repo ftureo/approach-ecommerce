@@ -5,7 +5,7 @@ import { getProducts } from "../services/productService";
 
 const ProductListContainer = () => {
     const [products, setProducts] = useState([]);
-    // const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     /**
      * @function loadProducts
@@ -16,7 +16,7 @@ const ProductListContainer = () => {
         const productsData = await getProducts();
 
         setProducts(productsData);
-        // setIsLoading(false);
+        setIsLoading(false);
     };
 
     useEffect(() => {
@@ -27,7 +27,13 @@ const ProductListContainer = () => {
             <h1>Acá renderizamos el acumulado de productos</h1>
             {/* Rendering with one condition - wip: add loading */}
             {/* {products.length === 0 && <h1>Todavía no tenemos los productos</h1>} */}
-            <ProductList products={products} />
+            {isLoading ? (
+                <h2>Cargando productos...</h2>
+            ) : products.length === 0 ? (
+                <h2>No tenemos productos disponibles para mostrar</h2>
+            ) : (
+                <ProductList products={products} />
+            )}
         </>
     );
 };
