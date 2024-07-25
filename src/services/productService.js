@@ -23,3 +23,16 @@ export const getProducts = async () => {
         throw new Error({ message: constants.INTERNAL_SERVER_ERROR })
     }
 }
+
+export const getProductById = async (productId) => {
+    try {
+        const response = await api.get(`${constants.ENDPOINT_PRODUCTS}/${productId}`)
+
+        return response.data
+    } catch (error) {
+        console.log(error, {
+            message: constants.INTERNAL_SERVER_ERROR
+        })
+        throw new Error({ message: constants.INTERNAL_SERVER_ERROR })
+    }
+}
